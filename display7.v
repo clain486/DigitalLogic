@@ -11,7 +11,7 @@ always@(iData)
     4'b0010:
         begin oData=7'b0100100;    end  //2
     4'b0011:
-        begin oData=7'b0110000;    end   //3
+        begin oData=7'b0110000;    end  //3
     4'b0100:
         begin oData=7'b0011001;    end  //4
     4'b0101:
