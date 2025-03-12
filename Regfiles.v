@@ -1,0 +1,44 @@
+module Regfiles(clk,rst,we,raddr1,raddr2,waddr,wdata,rdata1,rdata2);
+input clk,rst,we;
+input[4:0]raddr1,raddr2,waddr,wdata;
+output[31:0]rdata1,rdata2;
+
+wire [31:0]Q[31:0];
+wire [31:0]code;
+decoder deco(waddr,we,code);
+pcreg r0(clk,rst,~code[0],wdata,Q[0]);
+pcreg r1(clk,rst,~code[1],wdata,Q[1]);
+pcreg r2(clk,rst,~code[2],wdata,Q[2]);
+pcreg r3(clk,rst,~code[3],wdata,Q[3]);
+pcreg r4(clk,rst,~code[4],wdata,Q[4]);
+pcreg r5(clk,rst,~code[5],wdata,Q[5]);
+pcreg r6(clk,rst,~code[6],wdata,Q[6]);
+pcreg r7(clk,rst,~code[7],wdata,Q[7]);
+pcreg r8(clk,rst,~code[8],wdata,Q[8]);
+pcreg r9(clk,rst,~code[9],wdata,Q[9]);
+pcreg r10(clk,rst,~code[10],wdata,Q[10]);
+pcreg r11(clk,rst,~code[11],wdata,Q[11]);
+pcreg r12(clk,rst,~code[12],wdata,Q[12]);
+pcreg r13(clk,rst,~code[13],wdata,Q[13]);
+pcreg r14(clk,rst,~code[14],wdata,Q[14]);
+pcreg r15(clk,rst,~code[15],wdata,Q[15]);
+pcreg r16(clk,rst,~code[16],wdata,Q[16]);
+pcreg r17(clk,rst,~code[17],wdata,Q[17]);
+pcreg r18(clk,rst,~code[18],wdata,Q[18]);
+pcreg r19(clk,rst,~code[19],wdata,Q[19]);
+pcreg r20(clk,rst,~code[20],wdata,Q[20]);
+pcreg r21(clk,rst,~code[21],wdata,Q[21]);
+pcreg r22(clk,rst,~code[22],wdata,Q[22]);
+pcreg r23(clk,rst,~code[23],wdata,Q[23]);
+pcreg r24(clk,rst,~code[24],wdata,Q[24]);
+pcreg r25(clk,rst,~code[25],wdata,Q[25]);
+pcreg r26(clk,rst,~code[26],wdata,Q[26]);
+pcreg r27(clk,rst,~code[27],wdata,Q[27]);
+pcreg r28(clk,rst,~code[28],wdata,Q[28]);
+pcreg r29(clk,rst,~code[29],wdata,Q[29]);
+pcreg r30(clk,rst,~code[30],wdata,Q[30]);
+pcreg r31(clk,rst,~code[31],wdata,Q[31]);
+selector32_1 s1(Q[0],Q[1],Q[2],Q[3],Q[4],Q[5],Q[6],Q[7],Q[8],Q[9],Q[10],Q[11],Q[12],Q[13],Q[14],Q[15],Q[16],Q[17],Q[18],Q[19],Q[20],Q[21],Q[22],Q[23],Q[24],Q[25],Q[26],Q[27],Q[28],Q[29],Q[30],Q[31],raddr1,~we,rdata1);
+selector32_1 s2(Q[0],Q[1],Q[2],Q[3],Q[4],Q[5],Q[6],Q[7],Q[8],Q[9],Q[10],Q[11],Q[12],Q[13],Q[14],Q[15],Q[16],Q[17],Q[18],Q[19],Q[20],Q[21],Q[22],Q[23],Q[24],Q[25],Q[26],Q[27],Q[28],Q[29],Q[30],Q[31],raddr2,~we,rdata2);
+
+endmodule
